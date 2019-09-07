@@ -1,0 +1,16 @@
+trigger: none
+
+variables:
+  PIP_CONFIG_FILE: $(Build.SourcesDirectory)\pip.conf
+  ChocolateyInstall: c:\opt\chocolatey
+
+jobs:
+- job: Build
+  timeoutInMinutes: 300
+  pool:
+    vmImage: 'windows-2019'
+  steps:
+  - script: |
+      mkdir c:\opt\chocolatey
+      choco source add -n=ros-win -s="https://roswin.azurewebsites.net/api/v2" --priority=1
+      choco upgrade ros-melodic-ros_base -y --execution-timeout=0
