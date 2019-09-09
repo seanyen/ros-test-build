@@ -15,5 +15,5 @@ jobs:
       choco source add -n=ros-win -s="https://roswin.azurewebsites.net/api/v2" --priority=1
       choco upgrade ros-melodic-desktop_full -y --execution-timeout=0
   - script: |
-      7z a -sfx7z.sfx %Build_ArtifactStagingDirectory%\test.exe c:\opt\
+      7z a -sfx7z.sfx %Build_ArtifactStagingDirectory%\test.exe c:\opt\ -v256m
   - task: PublishBuildArtifacts@1
