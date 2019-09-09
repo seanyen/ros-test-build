@@ -14,3 +14,8 @@ jobs:
       mkdir c:\opt\chocolatey
       choco source add -n=ros-win -s="https://roswin.azurewebsites.net/api/v2" --priority=1
       choco upgrade ros-melodic-ros_base -y --execution-timeout=0
+  - script: |
+      7z a -sfx7z.sfx test.exe c:\opt\
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: 'test.exe'
